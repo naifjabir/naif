@@ -54,3 +54,4 @@ or wrote to).
 
 finally we have 4 rw parameters "read" for read only, "write" for write only, "randrw" for random read and write
 
+![image](https://github.com/naifjabir/naif/assets/144380230/b67928dd-0f2a-406d-a10f-c881513053f5)
