@@ -9,8 +9,11 @@ Due: 25-Oct-2023
 Commands:
 We use four main commands to do our testing:
 Read-only -> sudo fio --filename=/dev/sdb --rw=read --direct=1 --runtime=20 --numjobs=1 --time_based --group_reporting --name=seq_read --ioengine=sync --iodepth_batch=1 --bs=4k
+
 Write-only -> sudo fio --filename=/dev/sdb --rw=write --direct=1 --runtime=20 --numjobs=1 --time_based --group_reporting --name=seq_write --ioengine=sync --bs=32k --iodepth_batch=1 --bs=4k
+
 50:50 Read-Write -> sudo fio --filename=/dev/sdb --rw=randrw --direct=1 --runtime=20 --numjobs=1 --time_based --group_reporting --name=50_50_random_read_and_write --ioengine=sync --iodepth_batch=1 --bs=4k
+
 70:30 read-write -> sudo fio --filename=/dev/sdb --rw=randrw --direct=1 --runtime=20 --numjobs=1 --time_based --group_reporting --name=50_50_random_read_and_write --rwmixread=70 --ioengine=sync --iodepth_batch=1 --bs=4k
 
 Command explanation:
