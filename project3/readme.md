@@ -15,20 +15,35 @@ Write-only -> sudo fio --filename=/dev/sdb --rw=write --direct=1 --runtime=20 --
 50:50 Read-Write -> sudo fio --filename=/dev/sdb --rw=randrw --direct=1 --runtime=20 --numjobs=1 --time_based --group_reporting --name=50_50_random_read_and_write --ioengine=sync --iodepth_batch=1 --bs=4k
 
 70:30 read-write -> sudo fio --filename=/dev/sdb --rw=randrw --direct=1 --runtime=20 --numjobs=1 --time_based --group_reporting --name=50_50_random_read_and_write --rwmixread=70 --ioengine=sync --iodepth_batch=1 --bs=4k
-
+==========================================================================================================================================================================
 Command explanation:
+
 "filename" is used to designate a location where we perform our read and write test to avoid overwriting data in our disk and helps us avoid corrupting or deleting data.
+
 /dev/sbd is the second hard drive the system uses to do scanning and operations, a place where we can safely test our fio (flexible i/o tester).
+
 "rw" is a command used to specify what testing we are doing, read-only, write only, or a ratio of the two, or other options such as random reads and random writes.
+
 "direct" lets us choose whether we use non-buffered i/o or not, we set this to 1 to use non-buffered i/o
+
 "runtime" is the amount of sec we run for the test.
+
 "numjobs" is the number of clones (processes/threads performing the same workload) of this job.
-"time_based" specifies that the operation is time based, so it will keeping testing, even if it has to perform the same job (read and write of a registered we already read or wrote to).
+
+"time_based" specifies that the operation is time based, so it will keeping testing, even if it has to perform the same job (read and write of a registered we already read 
+or wrote to).
+
 "group_reporting" displays per-group reports instead of per-job when numjobs is specified.
+
 "name" is just a name to help seperate operations when we do a lot of testing, you can change this to whatever you are comfortable with
+
 "ioengine" defines how the job issues I/O, we use sync which does basic read(2) or write(2) I/O.
+
 "iodepth_batch" specifies number of I/Os to submit at once (we need to use this one because iodepth cannot be used with synchronous engines).
+
 "bs" is block size for I/O units. Default: 4k
+
 "rwmixread" is percentage of a mixed workload that should be reads. Default: 50.
+
 finally we have 4 rw parameters "read" for read only, "write" for write only, "randrw" for random read and write
 
