@@ -65,3 +65,9 @@ We see an almost linear increase of the throughput, but we see an exponential in
 
 (one other note we wanted to include was that for some data access at the 99.5th percentile and higher, we see latency increase to 100x times the 50th percentile value for the read operations and to 10000x times the50th percentile value for the write operations)
 
+Comparison to Intel Data Center NVMe SSD D7-5600 (1.6 TB)
+=========================================================
+NVMe SSDs are more performance driven compared to other SSDs. By leveraging the PCIe bus, NVMe SSDs have transfer speeds of up to 20GBps compared to regular SSDs with transfer speeds of 6GBps or less. PCIe buses can support 1x, 4x, 8x, and 16x lanes. This structure allows the NVMe SSD to do more read and write operations. The design of the NVMe SSD also bottlenecks for connections into one port (compared to other SSD's like SATA that use 2 instead) and will have to spend more time sperating the data before it can start doing reads and writes. This SSD costs more and will need consideration as to what computers to install them in.
+
+The NVMe SSD has a 4k write-only IOPS of 130K while our 4k write-only IOPS is 105k. The NVMe SSD operations speed is faster than ours. However, the values are rather close. Cheap NVMe drives don't have DRAM caches built into them and when running reads and writes, may be slower than a regular SSD. They have a harder time when we want lots of data read and wrote since they have such a small RAM to work with. They are made with the design of doing fast operations with small sets of RAM, but when we push this SSD to its limit and compared to others, we see that the SSD will have trouble with large sets of RAM and may even be slower in overall throughput even if its individual data access latency is better than other SSD's latencies.
+
