@@ -58,8 +58,10 @@ Results And Analysis
 ====================
 All of our charts for throughput and latency exhibits the queuing theory and one is provided directly here as an example (others can be seen in our excel sheet)
 As we increase storage queue depth (hence increase data access workload stress), SSD will achieve higher resource utilization and hence higher throughput, but meanwhile the latency of each data access request will be longer
+
 We see almost almost linear increase of the throughput, but we see an exponential increase in latency 
 ![image](https://github.com/naifjabir/naif/assets/144380230/a088ab33-6b4f-49f6-9de4-dee4364e296b)
 ![image](https://github.com/naifjabir/naif/assets/144380230/5a0ce32e-cfce-45a5-aad1-9baead00f0f4)
+
 (one other note we wanted to include was that for some data access at the 99.5th percentile and higher, we see latency increase to 100x times the 50th percentile value for the read operations and to 10000x times the50th percentile value for the write operations)
 
